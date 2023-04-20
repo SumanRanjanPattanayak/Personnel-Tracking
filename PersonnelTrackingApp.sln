@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PERSONNEL TRACKING", "Personnel Tracking\PERSONNEL TRACKING.csproj", "{4826C1CE-04C4-4A7A-AF83-088F3852C409}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{ED453879-395E-4416-AF8D-03CB63E7BACA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{5C0DA76A-67C6-49FB-9005-1A4731E12116}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4826C1CE-04C4-4A7A-AF83-088F3852C409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4826C1CE-04C4-4A7A-AF83-088F3852C409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4826C1CE-04C4-4A7A-AF83-088F3852C409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4826C1CE-04C4-4A7A-AF83-088F3852C409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED453879-395E-4416-AF8D-03CB63E7BACA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED453879-395E-4416-AF8D-03CB63E7BACA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED453879-395E-4416-AF8D-03CB63E7BACA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED453879-395E-4416-AF8D-03CB63E7BACA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C0DA76A-67C6-49FB-9005-1A4731E12116}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C0DA76A-67C6-49FB-9005-1A4731E12116}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C0DA76A-67C6-49FB-9005-1A4731E12116}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C0DA76A-67C6-49FB-9005-1A4731E12116}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F356A270-D372-48F1-B17F-D50F242D75A0}
+	EndGlobalSection
+EndGlobal
