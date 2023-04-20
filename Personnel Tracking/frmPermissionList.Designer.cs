@@ -35,7 +35,7 @@
             this.lblDayAmount = new System.Windows.Forms.Label();
             this.txtDayAmount = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbDeliveryDate = new System.Windows.Forms.RadioButton();
+            this.rbEndDate = new System.Windows.Forms.RadioButton();
             this.rbStartDate = new System.Windows.Forms.RadioButton();
             this.dtpFinish = new System.Windows.Forms.DateTimePicker();
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
@@ -45,7 +45,7 @@
             this.pnlForAdmin = new System.Windows.Forms.Panel();
             this.cmbPosition = new System.Windows.Forms.ComboBox();
             this.lblUserNo = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSurname = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.lblPosition = new System.Windows.Forms.Label();
             this.txtUserNo = new System.Windows.Forms.TextBox();
@@ -61,6 +61,8 @@
             this.btnDisapprove = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cmbState = new System.Windows.Forms.ComboBox();
+            this.lblState = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -88,7 +90,9 @@
             this.panel3.Controls.Add(this.groupBox1);
             this.panel3.Controls.Add(this.dtpFinish);
             this.panel3.Controls.Add(this.dtpStart);
+            this.panel3.Controls.Add(this.lblState);
             this.panel3.Controls.Add(this.lblFinish);
+            this.panel3.Controls.Add(this.cmbState);
             this.panel3.Controls.Add(this.lblStart);
             this.panel3.Controls.Add(this.lblPermissionDate);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -106,16 +110,18 @@
             this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(182, 113);
+            this.btnSearch.Location = new System.Drawing.Point(270, 79);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(82, 29);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // lblDayAmount
             // 
@@ -137,24 +143,24 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.rbDeliveryDate);
+            this.groupBox1.Controls.Add(this.rbEndDate);
             this.groupBox1.Controls.Add(this.rbStartDate);
-            this.groupBox1.Location = new System.Drawing.Point(251, 35);
+            this.groupBox1.Location = new System.Drawing.Point(260, 23);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(101, 46);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             // 
-            // rbDeliveryDate
+            // rbEndDate
             // 
-            this.rbDeliveryDate.AutoSize = true;
-            this.rbDeliveryDate.Location = new System.Drawing.Point(7, 29);
-            this.rbDeliveryDate.Name = "rbDeliveryDate";
-            this.rbDeliveryDate.Size = new System.Drawing.Size(89, 17);
-            this.rbDeliveryDate.TabIndex = 1;
-            this.rbDeliveryDate.TabStop = true;
-            this.rbDeliveryDate.Text = "Delivery Date";
-            this.rbDeliveryDate.UseVisualStyleBackColor = true;
+            this.rbEndDate.AutoSize = true;
+            this.rbEndDate.Location = new System.Drawing.Point(7, 29);
+            this.rbEndDate.Name = "rbEndDate";
+            this.rbEndDate.Size = new System.Drawing.Size(70, 17);
+            this.rbEndDate.TabIndex = 1;
+            this.rbEndDate.TabStop = true;
+            this.rbEndDate.Text = "End Date";
+            this.rbEndDate.UseVisualStyleBackColor = true;
             // 
             // rbStartDate
             // 
@@ -215,7 +221,7 @@
             // 
             this.pnlForAdmin.Controls.Add(this.cmbPosition);
             this.pnlForAdmin.Controls.Add(this.lblUserNo);
-            this.pnlForAdmin.Controls.Add(this.textBox1);
+            this.pnlForAdmin.Controls.Add(this.txtSurname);
             this.pnlForAdmin.Controls.Add(this.lblName);
             this.pnlForAdmin.Controls.Add(this.lblPosition);
             this.pnlForAdmin.Controls.Add(this.txtUserNo);
@@ -234,7 +240,7 @@
             this.cmbPosition.FormattingEnabled = true;
             this.cmbPosition.Location = new System.Drawing.Point(122, 114);
             this.cmbPosition.Name = "cmbPosition";
-            this.cmbPosition.Size = new System.Drawing.Size(100, 21);
+            this.cmbPosition.Size = new System.Drawing.Size(129, 21);
             this.cmbPosition.TabIndex = 4;
             // 
             // lblUserNo
@@ -247,12 +253,12 @@
             this.lblUserNo.TabIndex = 19;
             this.lblUserNo.Text = "User No";
             // 
-            // textBox1
+            // txtSurname
             // 
-            this.textBox1.Location = new System.Drawing.Point(122, 61);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtSurname.Location = new System.Drawing.Point(122, 61);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(129, 20);
+            this.txtSurname.TabIndex = 2;
             // 
             // lblName
             // 
@@ -278,7 +284,7 @@
             // 
             this.txtUserNo.Location = new System.Drawing.Point(122, 9);
             this.txtUserNo.Name = "txtUserNo";
-            this.txtUserNo.Size = new System.Drawing.Size(100, 20);
+            this.txtUserNo.Size = new System.Drawing.Size(129, 20);
             this.txtUserNo.TabIndex = 0;
             this.txtUserNo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUserNo_KeyPress);
             // 
@@ -286,7 +292,7 @@
             // 
             this.txtName.Location = new System.Drawing.Point(122, 35);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(100, 20);
+            this.txtName.Size = new System.Drawing.Size(129, 20);
             this.txtName.TabIndex = 1;
             // 
             // lblDepartment
@@ -304,7 +310,7 @@
             this.cmbDepartment.FormattingEnabled = true;
             this.cmbDepartment.Location = new System.Drawing.Point(122, 87);
             this.cmbDepartment.Name = "cmbDepartment";
-            this.cmbDepartment.Size = new System.Drawing.Size(100, 21);
+            this.cmbDepartment.Size = new System.Drawing.Size(129, 21);
             this.cmbDepartment.TabIndex = 3;
             // 
             // lblSurName
@@ -396,12 +402,31 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 146);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(656, 210);
             this.dataGridView1.TabIndex = 2;
+            // 
+            // cmbState
+            // 
+            this.cmbState.FormattingEnabled = true;
+            this.cmbState.Location = new System.Drawing.Point(119, 114);
+            this.cmbState.Name = "cmbState";
+            this.cmbState.Size = new System.Drawing.Size(126, 21);
+            this.cmbState.TabIndex = 3;
+            // 
+            // lblState
+            // 
+            this.lblState.AutoSize = true;
+            this.lblState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblState.Location = new System.Drawing.Point(6, 114);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(53, 20);
+            this.lblState.TabIndex = 18;
+            this.lblState.Text = "State";
             // 
             // frmPermissionList
             // 
@@ -414,6 +439,7 @@
             this.Name = "frmPermissionList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Permission List";
+            this.Load += new System.EventHandler(this.frmPermissionList_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -442,7 +468,7 @@
         private System.Windows.Forms.Panel pnlForAdmin;
         private System.Windows.Forms.ComboBox cmbPosition;
         private System.Windows.Forms.Label lblUserNo;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.TextBox txtUserNo;
@@ -453,7 +479,7 @@
         private System.Windows.Forms.Label lblDayAmount;
         private System.Windows.Forms.TextBox txtDayAmount;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rbDeliveryDate;
+        private System.Windows.Forms.RadioButton rbEndDate;
         private System.Windows.Forms.RadioButton rbStartDate;
         private System.Windows.Forms.DateTimePicker dtpFinish;
         private System.Windows.Forms.DateTimePicker dtpStart;
@@ -462,5 +488,7 @@
         private System.Windows.Forms.Label lblPermissionDate;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label lblState;
+        private System.Windows.Forms.ComboBox cmbState;
     }
 }

@@ -84,6 +84,7 @@
             this.dtpFinish.Name = "dtpFinish";
             this.dtpFinish.Size = new System.Drawing.Size(126, 20);
             this.dtpFinish.TabIndex = 2;
+            this.dtpFinish.ValueChanged += new System.EventHandler(this.dtpFinish_ValueChanged);
             // 
             // dtpStart
             // 
@@ -91,6 +92,7 @@
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(126, 20);
             this.dtpStart.TabIndex = 1;
+            this.dtpStart.ValueChanged += new System.EventHandler(this.dtpStart_ValueChanged);
             // 
             // lblFinish
             // 
@@ -150,6 +152,7 @@
             this.btnSave.TabIndex = 5;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // frmPermission
             // 
@@ -171,6 +174,7 @@
             this.Name = "frmPermission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Permission";
+            this.Load += new System.EventHandler(this.frmPermission_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
