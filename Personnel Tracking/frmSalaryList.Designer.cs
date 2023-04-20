@@ -35,8 +35,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbEquals = new System.Windows.Forms.RadioButton();
             this.rbLess = new System.Windows.Forms.RadioButton();
-            this.rbMorwe = new System.Windows.Forms.RadioButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.rbMore = new System.Windows.Forms.RadioButton();
+            this.cmbMonth = new System.Windows.Forms.ComboBox();
             this.lblMonth = new System.Windows.Forms.Label();
             this.txtYear = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,7 +44,7 @@
             this.lblSalary = new System.Windows.Forms.Label();
             this.pnlForAdmin = new System.Windows.Forms.Panel();
             this.cmbPosition = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSurname = new System.Windows.Forms.TextBox();
             this.lblPosition = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.cmbDepartment = new System.Windows.Forms.ComboBox();
@@ -82,7 +82,7 @@
             this.panel3.Controls.Add(this.btnClear);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.groupBox1);
-            this.panel3.Controls.Add(this.comboBox1);
+            this.panel3.Controls.Add(this.cmbMonth);
             this.panel3.Controls.Add(this.lblMonth);
             this.panel3.Controls.Add(this.txtYear);
             this.panel3.Controls.Add(this.label1);
@@ -103,6 +103,7 @@
             this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSearch
             // 
@@ -113,12 +114,13 @@
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.rbEquals);
             this.groupBox1.Controls.Add(this.rbLess);
-            this.groupBox1.Controls.Add(this.rbMorwe);
+            this.groupBox1.Controls.Add(this.rbMore);
             this.groupBox1.Location = new System.Drawing.Point(225, 56);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(171, 44);
@@ -147,24 +149,24 @@
             this.rbLess.Text = "Less";
             this.rbLess.UseVisualStyleBackColor = true;
             // 
-            // rbMorwe
+            // rbMore
             // 
-            this.rbMorwe.AutoSize = true;
-            this.rbMorwe.Location = new System.Drawing.Point(6, 19);
-            this.rbMorwe.Name = "rbMorwe";
-            this.rbMorwe.Size = new System.Drawing.Size(49, 17);
-            this.rbMorwe.TabIndex = 0;
-            this.rbMorwe.TabStop = true;
-            this.rbMorwe.Text = "More";
-            this.rbMorwe.UseVisualStyleBackColor = true;
+            this.rbMore.AutoSize = true;
+            this.rbMore.Location = new System.Drawing.Point(6, 19);
+            this.rbMore.Name = "rbMore";
+            this.rbMore.Size = new System.Drawing.Size(49, 17);
+            this.rbMore.TabIndex = 0;
+            this.rbMore.TabStop = true;
+            this.rbMore.Text = "More";
+            this.rbMore.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cmbMonth
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(119, 47);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 1;
+            this.cmbMonth.FormattingEnabled = true;
+            this.cmbMonth.Location = new System.Drawing.Point(119, 47);
+            this.cmbMonth.Name = "cmbMonth";
+            this.cmbMonth.Size = new System.Drawing.Size(100, 21);
+            this.cmbMonth.TabIndex = 1;
             // 
             // lblMonth
             // 
@@ -213,7 +215,7 @@
             // pnlForAdmin
             // 
             this.pnlForAdmin.Controls.Add(this.cmbPosition);
-            this.pnlForAdmin.Controls.Add(this.textBox1);
+            this.pnlForAdmin.Controls.Add(this.txtSurname);
             this.pnlForAdmin.Controls.Add(this.lblPosition);
             this.pnlForAdmin.Controls.Add(this.txtName);
             this.pnlForAdmin.Controls.Add(this.cmbDepartment);
@@ -236,12 +238,12 @@
             this.cmbPosition.Size = new System.Drawing.Size(100, 21);
             this.cmbPosition.TabIndex = 4;
             // 
-            // textBox1
+            // txtSurname
             // 
-            this.textBox1.Location = new System.Drawing.Point(122, 71);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtSurname.Location = new System.Drawing.Point(122, 71);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(100, 20);
+            this.txtSurname.TabIndex = 2;
             // 
             // lblPosition
             // 
@@ -267,6 +269,7 @@
             this.cmbDepartment.Name = "cmbDepartment";
             this.cmbDepartment.Size = new System.Drawing.Size(100, 21);
             this.cmbDepartment.TabIndex = 3;
+            this.cmbDepartment.SelectedIndexChanged += new System.EventHandler(this.cmbDepartment_SelectedIndexChanged);
             // 
             // lblSurName
             // 
@@ -372,6 +375,7 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 167);
@@ -390,6 +394,7 @@
             this.Name = "frmSalaryList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Salary List";
+            this.Load += new System.EventHandler(this.frmSalaryList_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
@@ -415,7 +420,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.ComboBox cmbPosition;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.Label lblPosition;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.ComboBox cmbDepartment;
@@ -424,7 +429,7 @@
         private System.Windows.Forms.TextBox txtUserNo;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblUserNo;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cmbMonth;
         private System.Windows.Forms.Label lblMonth;
         private System.Windows.Forms.TextBox txtYear;
         private System.Windows.Forms.Label label1;
@@ -433,7 +438,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbEquals;
         private System.Windows.Forms.RadioButton rbLess;
-        private System.Windows.Forms.RadioButton rbMorwe;
+        private System.Windows.Forms.RadioButton rbMore;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSearch;
     }
