@@ -178,7 +178,7 @@ namespace PERSONNEL_TRACKING
             detail.StartDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
             detail.EndDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
             detail.Explanation = dataGridView1.Rows[e.RowIndex].Cells[14].Value.ToString();
-            detail.UserNo = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
+            detail.UserNo = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[11].Value);
             detail.State = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[12].Value);
             detail.PermissionDayAmount = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
         }
