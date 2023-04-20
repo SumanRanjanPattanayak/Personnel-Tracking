@@ -69,6 +69,7 @@ namespace PERSONNEL_TRACKING
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns[13].Visible = false;
             dataGridView1.Columns[14].Visible = false;
+            //MessageBox.Show(UserStatic.EmployeeID.ToString() + "" + UserStatic.UserNo.ToString() + "" + UserStatic.isAdmin.ToString());
         }
 
         private void btnNew_Click(object sender, EventArgs e)
