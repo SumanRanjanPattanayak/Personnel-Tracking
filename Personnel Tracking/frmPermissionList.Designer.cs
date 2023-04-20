@@ -39,7 +39,9 @@
             this.rbStartDate = new System.Windows.Forms.RadioButton();
             this.dtpFinish = new System.Windows.Forms.DateTimePicker();
             this.dtpStart = new System.Windows.Forms.DateTimePicker();
+            this.lblState = new System.Windows.Forms.Label();
             this.lblFinish = new System.Windows.Forms.Label();
+            this.cmbState = new System.Windows.Forms.ComboBox();
             this.lblStart = new System.Windows.Forms.Label();
             this.lblPermissionDate = new System.Windows.Forms.Label();
             this.pnlForAdmin = new System.Windows.Forms.Panel();
@@ -61,8 +63,6 @@
             this.btnDisapprove = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cmbState = new System.Windows.Forms.ComboBox();
-            this.lblState = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -187,6 +187,16 @@
             this.dtpStart.Size = new System.Drawing.Size(126, 20);
             this.dtpStart.TabIndex = 0;
             // 
+            // lblState
+            // 
+            this.lblState.AutoSize = true;
+            this.lblState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblState.Location = new System.Drawing.Point(6, 114);
+            this.lblState.Name = "lblState";
+            this.lblState.Size = new System.Drawing.Size(53, 20);
+            this.lblState.TabIndex = 18;
+            this.lblState.Text = "State";
+            // 
             // lblFinish
             // 
             this.lblFinish.AutoSize = true;
@@ -196,6 +206,14 @@
             this.lblFinish.Size = new System.Drawing.Size(57, 20);
             this.lblFinish.TabIndex = 14;
             this.lblFinish.Text = "Finish";
+            // 
+            // cmbState
+            // 
+            this.cmbState.FormattingEnabled = true;
+            this.cmbState.Location = new System.Drawing.Point(119, 114);
+            this.cmbState.Name = "cmbState";
+            this.cmbState.Size = new System.Drawing.Size(126, 21);
+            this.cmbState.TabIndex = 3;
             // 
             // lblStart
             // 
@@ -346,6 +364,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Approve";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnClose
             // 
@@ -388,6 +407,7 @@
             this.btnDisapprove.TabIndex = 1;
             this.btnDisapprove.Text = "Disapprove";
             this.btnDisapprove.UseVisualStyleBackColor = true;
+            this.btnDisapprove.Click += new System.EventHandler(this.btnDisapprove_Click);
             // 
             // btnNew
             // 
@@ -409,24 +429,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(656, 210);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // cmbState
-            // 
-            this.cmbState.FormattingEnabled = true;
-            this.cmbState.Location = new System.Drawing.Point(119, 114);
-            this.cmbState.Name = "cmbState";
-            this.cmbState.Size = new System.Drawing.Size(126, 21);
-            this.cmbState.TabIndex = 3;
-            // 
-            // lblState
-            // 
-            this.lblState.AutoSize = true;
-            this.lblState.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblState.Location = new System.Drawing.Point(6, 114);
-            this.lblState.Name = "lblState";
-            this.lblState.Size = new System.Drawing.Size(53, 20);
-            this.lblState.TabIndex = 18;
-            this.lblState.Text = "State";
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // frmPermissionList
             // 
