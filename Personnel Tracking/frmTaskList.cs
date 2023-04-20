@@ -31,11 +31,29 @@ namespace PERSONNEL_TRACKING
 
         TaskDTO dto = new TaskDTO();
         private bool comboFull = false;
-
-        private void frmTaskList_Load(object sender, EventArgs e)
+        void FillAllData()
         {
             dto = TaskBLL.GetAll();
             dataGridView1.DataSource = dto.Tasks;
+            comboFull = false;
+            cmbDepartment.DataSource = dto.Departments;
+            cmbDepartment.DisplayMember = "DepartmentName";
+            cmbDepartment.ValueMember = "ID";
+            cmbDepartment.SelectedIndex = -1;
+            cmbPosition.DataSource = dto.Positions;
+            cmbPosition.DisplayMember = "PositionName";
+            cmbPosition.ValueMember = "ID";
+            cmbPosition.SelectedIndex = -1;
+            comboFull = true;
+            cmbTaskState.DataSource = dto.TaskStates;
+            cmbTaskState.DisplayMember = "StateName";
+            cmbTaskState.ValueMember = "ID";
+            cmbTaskState.SelectedIndex = -1;
+        }
+
+        private void frmTaskList_Load(object sender, EventArgs e)
+        {
+            FillAllData();
             dataGridView1.Columns[0].HeaderText = "Task Title";
             dataGridView1.Columns[1].HeaderText = "User No";
             dataGridView1.Columns[2].HeaderText = "Name";
@@ -51,20 +69,6 @@ namespace PERSONNEL_TRACKING
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns[13].Visible = false;
             dataGridView1.Columns[14].Visible = false;
-            comboFull = false;
-            cmbDepartment.DataSource = dto.Departments;
-            cmbDepartment.DisplayMember = "DepartmentName";
-            cmbDepartment.ValueMember = "ID";
-            cmbDepartment.SelectedIndex = -1;
-            cmbPosition.DataSource = dto.Positions;
-            cmbPosition.DisplayMember = "PositionName";
-            cmbPosition.ValueMember = "ID";
-            cmbPosition.SelectedIndex = -1;
-            comboFull = true;
-            cmbTaskState.DataSource = dto.TaskStates;
-            cmbTaskState.DisplayMember = "State Name";
-            cmbTaskState.ValueMember = "ID";
-            cmbTaskState.SelectedIndex = -1;
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -73,6 +77,8 @@ namespace PERSONNEL_TRACKING
             this.Hide();
             frm.ShowDialog();
             this.Visible = true;
+            FillAllData();
+            CleanFilters();
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -90,6 +96,65 @@ namespace PERSONNEL_TRACKING
                 cmbPosition.DataSource = dto.Positions.Where(x => x.DepartmentID == Convert.ToInt32(cmbDepartment.SelectedValue)).ToList();
                 
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            List<TaskDetailDTO> list = dto.Tasks;
+            if (txtUserNo.Text.Trim() != "")
+            {
+                list = list.Where(x => x.UserNo == Convert.ToInt32(txtUserNo.Text)).ToList();
+            }
+            if (txtName.Text.Trim() != "")
+            {
+                list = list.Where(x => x.Name.Contains(txtName.Text)).ToList();
+            }
+            if (txtSurname.Text.Trim() != "")
+            {
+                list = list.Where(x => x.Surname.Contains(txtSurname.Text)).ToList();
+            }
+            if (cmbDepartment.SelectedIndex != -1)
+            {
+                list = list.Where(x => x.DepartmentID == Convert.ToInt32(cmbDepartment.SelectedValue)).ToList();
+            }
+            if (cmbPosition.SelectedIndex != -1)
+            {
+                list = list.Where(x => x.PositionID == Convert.ToInt32(cmbPosition.SelectedValue)).ToList();
+            }
+            if (rbStartDate.Checked)
+            {
+                list = list.Where(x => x.TaskStartDate > Convert.ToDateTime(dtpStart.Value) && x.TaskStartDate < Convert.ToDateTime(dtpFinish.Value)).ToList();
+            }
+            if (rbDeliveryDate.Checked)
+            {
+                list = list.Where(x => x.TaskDeliveryDate > Convert.ToDateTime(dtpStart.Value) && x.TaskDeliveryDate < Convert.ToDateTime(dtpFinish.Value)).ToList();
+            }
+            if (cmbTaskState.SelectedIndex != -1)
+            {
+                list.Where(x => x.TaskStateID == Convert.ToInt32(cmbTaskState.SelectedValue)).ToList();
+            }
+            dataGridView1.DataSource = list;
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            CleanFilters();
+        }
+
+        private void CleanFilters()
+        {
+            txtUserNo.Clear();
+            txtName.Clear();
+            txtSurname.Clear();
+            comboFull = false;
+            cmbDepartment.SelectedIndex = -1;
+            cmbPosition.DataSource = dto.Positions;
+            cmbPosition.SelectedIndex = -1;
+            comboFull = true;
+            rbDeliveryDate.Checked = false;
+            rbStartDate.Checked = false;
+            cmbTaskState.SelectedIndex = -1;
+            dataGridView1.DataSource = dto.Tasks;
         }
     }
 }

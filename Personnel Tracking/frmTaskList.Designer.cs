@@ -44,7 +44,7 @@
             this.lblTaskDate = new System.Windows.Forms.Label();
             this.pnlForAdmin = new System.Windows.Forms.Panel();
             this.cmbPosition = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSurname = new System.Windows.Forms.TextBox();
             this.lblPosition = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.cmbDepartment = new System.Windows.Forms.ComboBox();
@@ -105,6 +105,7 @@
             this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnSearch
             // 
@@ -115,6 +116,7 @@
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Search";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // cmbTaskState
             // 
@@ -213,7 +215,7 @@
             // pnlForAdmin
             // 
             this.pnlForAdmin.Controls.Add(this.cmbPosition);
-            this.pnlForAdmin.Controls.Add(this.textBox1);
+            this.pnlForAdmin.Controls.Add(this.txtSurname);
             this.pnlForAdmin.Controls.Add(this.lblPosition);
             this.pnlForAdmin.Controls.Add(this.txtName);
             this.pnlForAdmin.Controls.Add(this.cmbDepartment);
@@ -236,12 +238,12 @@
             this.cmbPosition.Size = new System.Drawing.Size(100, 21);
             this.cmbPosition.TabIndex = 4;
             // 
-            // textBox1
+            // txtSurname
             // 
-            this.textBox1.Location = new System.Drawing.Point(132, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtSurname.Location = new System.Drawing.Point(132, 64);
+            this.txtSurname.Name = "txtSurname";
+            this.txtSurname.Size = new System.Drawing.Size(100, 20);
+            this.txtSurname.TabIndex = 2;
             // 
             // lblPosition
             // 
@@ -428,7 +430,7 @@
         private System.Windows.Forms.Button btnNew;
         private System.Windows.Forms.Panel pnlForAllUsers;
         private System.Windows.Forms.Panel pnlForAdmin;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSurname;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblSurName;
         private System.Windows.Forms.TextBox txtUserNo;
