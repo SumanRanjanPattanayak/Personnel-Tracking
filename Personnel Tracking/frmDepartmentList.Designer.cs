@@ -47,6 +47,7 @@
             this.dgvDepartmentList.Name = "dgvDepartmentList";
             this.dgvDepartmentList.Size = new System.Drawing.Size(383, 261);
             this.dgvDepartmentList.TabIndex = 0;
+            this.dgvDepartmentList.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDepartmentList_RowEnter);
             // 
             // pnlDepartmentList
             // 

@@ -34,10 +34,36 @@ namespace PERSONNEL_TRACKING
             else
             {
                 DEPARTMENT department = new DEPARTMENT();
-                department.DepartmentName = txtDepartment.Text;
-                BLL.DepartmentBLL.AddDepartment(department);
-                MessageBox.Show("Department was added");
-                txtDepartment.Clear();
+                if (!isUpdate)
+                {
+                    department.DepartmentName = txtDepartment.Text;
+                    BLL.DepartmentBLL.AddDepartment(department);
+                    MessageBox.Show("Department was added");
+                    txtDepartment.Clear();
+                }
+                else 
+                {
+                    DialogResult result = MessageBox.Show("Are you Sure!", "Warning!", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                    {
+                        department.ID = detail.ID;
+                        department.DepartmentName = txtDepartment.Text;
+                        DepartmentBLL.UpdateDepartment(department);
+                        MessageBox.Show("Department was Updated");
+                        this.Close();
+                    }
+                }
+            }
+        }
+
+        public bool isUpdate = false;
+        public DEPARTMENT detail = new DEPARTMENT();
+
+        private void frmDepartment_Load(object sender, EventArgs e)
+        {
+            if (isUpdate) 
+            {
+                txtDepartment.Text = detail.DepartmentName;
             }
         }
     }

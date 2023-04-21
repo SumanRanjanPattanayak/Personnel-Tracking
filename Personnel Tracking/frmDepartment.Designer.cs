@@ -85,6 +85,7 @@
             this.Name = "frmDepartment";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Department";
+            this.Load += new System.EventHandler(this.frmDepartment_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

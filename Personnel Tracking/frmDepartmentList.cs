@@ -36,13 +36,25 @@ namespace PERSONNEL_TRACKING
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            frmDepartment frm = new frmDepartment();
-            this.Hide();
-            frm.ShowDialog();
-            this.Visible = true;
+            if (detail.ID == 0)
+            {
+                MessageBox.Show("Please Select a Department!");
+            }
+            else 
+            {
+                frmDepartment frm = new frmDepartment();
+                frm.isUpdate = true;
+                frm.detail = detail;
+                this.Hide();
+                frm.ShowDialog();
+                this.Visible = true;
+                list = DepartmentBLL.GetDepartment();
+                dgvDepartmentList.DataSource = list;
+            }
         }
 
         List<DEPARTMENT> list = new List<DEPARTMENT>();
+        public DEPARTMENT detail = new DEPARTMENT();
 
         private void frmDepartmentList_Load(object sender, EventArgs e)
         {
@@ -50,6 +62,12 @@ namespace PERSONNEL_TRACKING
             dgvDepartmentList.DataSource = list;
             dgvDepartmentList.Columns[0].Visible = false;
             dgvDepartmentList.Columns[1].HeaderText = "Department Name";
+        }
+
+        private void dgvDepartmentList_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            detail.ID = Convert.ToInt32(dgvDepartmentList.Rows[e.RowIndex].Cells[0].Value);
+            detail.DepartmentName = dgvDepartmentList.Rows[e.RowIndex].Cells[1].Value.ToString();
         }
     }
 }
