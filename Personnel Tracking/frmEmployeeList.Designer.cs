@@ -247,6 +247,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(559, 281);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
             // frmEmployeeList
             // 
@@ -257,6 +258,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "frmEmployeeList";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Employee List";
             this.Load += new System.EventHandler(this.frmEmployeeList_Load);
             this.panel1.ResumeLayout(false);

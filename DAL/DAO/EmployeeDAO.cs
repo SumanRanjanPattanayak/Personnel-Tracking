@@ -64,8 +64,8 @@ namespace DAL.DAO
                 dto.isAdmin = item.isAdmin;
                 dto.Salary = item.Salary;
                 dto.Address = item.Address;
+                dto.ImagePath = item.ImagePath;
                 dto.BirthDay = item.Birthday;
-
                 employeeList.Add(dto);
             }
             return employeeList;
@@ -103,6 +103,30 @@ namespace DAL.DAO
 
                 throw ex;
             };
+        }
+
+        public static void UpdateEmployee(EMPLOYEE employee)
+        {
+            try
+            {
+                EMPLOYEE emp = db.EMPLOYEEs.First(x => x.ID == employee.ID);
+                emp.UserNo = employee.UserNo;
+                emp.Name = employee.Name;
+                emp.Surname = employee.Surname;
+                emp.Password = employee.Password;
+                emp.isAdmin = employee.isAdmin;
+                emp.BirthDay = employee.BirthDay;
+                emp.Address = employee.Address;
+                emp.DepartmentID = employee.DepartmentID;
+                emp.PositionID = employee.PositionID;
+                emp.Salary = employee.Salary;
+                db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
