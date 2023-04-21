@@ -10,6 +10,6 @@ namespace PERSONNEL_TRACKING
     {
         public static int EmployeeID { get; set; }
         public static int UserNo { get; set; }
-        public static bool? isAdmin { get; set; }
+        public static bool isAdmin { get; set; }
     }
 }

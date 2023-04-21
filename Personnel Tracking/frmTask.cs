@@ -58,7 +58,7 @@ namespace PERSONNEL_TRACKING
             cmbPosition.SelectedIndex = -1;
             comboFull = true;
             cmbTaskState.DataSource = dto.TaskStates;
-            cmbTaskState.DisplayMember = "State Name";
+            cmbTaskState.DisplayMember = "StateName";
             cmbTaskState.ValueMember = "ID";
             cmbTaskState.SelectedIndex = -1;
             if (isUpdate)

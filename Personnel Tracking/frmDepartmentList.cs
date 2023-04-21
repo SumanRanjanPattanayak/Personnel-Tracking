@@ -69,5 +69,17 @@ namespace PERSONNEL_TRACKING
             detail.ID = Convert.ToInt32(dgvDepartmentList.Rows[e.RowIndex].Cells[0].Value);
             detail.DepartmentName = dgvDepartmentList.Rows[e.RowIndex].Cells[1].Value.ToString();
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you Sure to delete this Department?", "Warning!", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                DepartmentBLL.DeleteDepartment(detail.ID);
+                MessageBox.Show("Department was deleted");
+                list = DepartmentBLL.GetDepartment();
+                dgvDepartmentList.DataSource = list;
+            }
+        }
     }
 }

@@ -23,6 +23,32 @@ namespace DAL.DAO
 			};
         }
 
+        public static void DeleteEmployee(int employeeID)
+        {
+            try
+            {
+                EMPLOYEE emp = db.EMPLOYEEs.First(x => x.ID == employeeID);
+                db.EMPLOYEEs.DeleteOnSubmit(emp);
+                db.SubmitChanges();
+                
+                //We can use below code instead of trigger...
+                //List<TASK> tasks = db.TASKs.Where(x => x.EmployeeID == employeeID).ToList();
+                //db.TASKs.DeleteAllOnSubmit(tasks);
+                //db.SubmitChanges();
+                //List<SALARY> salaries = db.SALARies.Where(x => x.EmployeeID == employeeID).ToList();
+                //db.SALARies.DeleteAllOnSubmit(salaries);
+                //db.SubmitChanges();
+                //List<PERMISSION> permissions = db.PERMISSIONs.Where(x => x.EmployeeID == employeeID).ToList();
+                //db.PERMISSIONs.DeleteAllOnSubmit(permissions);
+                //db.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public static List<EmployeeDetailDTO> GetEmployee()
         {
             List<EmployeeDetailDTO> employeeList = new List<EmployeeDetailDTO>();

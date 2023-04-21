@@ -48,7 +48,7 @@ namespace PERSONNEL_TRACKING
                     employee = employeelist.First();
                     UserStatic.EmployeeID = employee.ID;
                     UserStatic.UserNo = employee.UserNo;
-                    UserStatic.isAdmin = employee.isAdmin;
+                    UserStatic.isAdmin = Convert.ToBoolean(employee.isAdmin);
                     frmMain frm = new frmMain();
                     this.Hide();
                     frm.ShowDialog();

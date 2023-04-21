@@ -34,6 +34,10 @@ namespace PERSONNEL_TRACKING
         void FillAllData()
         {
             dto = TaskBLL.GetAll();
+            if (!UserStatic.isAdmin)
+            {
+                dto.Tasks = dto.Tasks.Where(x=>x.EmployeeID==UserStatic.EmployeeID).ToList();
+            }
             dataGridView1.DataSource = dto.Tasks;
             comboFull = false;
             cmbDepartment.DataSource = dto.Departments;
@@ -71,6 +75,16 @@ namespace PERSONNEL_TRACKING
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns[13].Visible = false;
             dataGridView1.Columns[14].Visible = false;
+            if (!UserStatic.isAdmin)
+            {
+                btnNew.Visible = false;
+                btnUpdate.Visible = false;
+                btnDelete.Visible = false;
+                btnClose.Location = new Point(357, 31);
+                btnApprove.Location = new Point(181, 31);
+                pnlForAdmin.Hide();
+                btnApprove.Text = "Deliver";
+            }
         }
 
         private void btnNew_Click(object sender, EventArgs e)
@@ -182,6 +196,50 @@ namespace PERSONNEL_TRACKING
             detail.EmployeeID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[12].Value);
             detail.TaskStartDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
             detail.TaskDeliveryDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[5].Value);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you Sure to delete this Task?", "Warning!", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                TaskBLL.DeleteTask(detail.TaskID);
+                MessageBox.Show("Task was Deleted");
+                FillAllData();
+                CleanFilters();
+            }
+        }
+
+        private void btnApprove_Click(object sender, EventArgs e)
+        {
+            if (UserStatic.isAdmin && detail.TaskStateID == TaskStates.OnEmployee && detail.EmployeeID != UserStatic.EmployeeID)
+            {
+                MessageBox.Show("Before approving a task, employee have to deliver the task");
+            }
+            else if (UserStatic.isAdmin && detail.TaskStateID == TaskStates.Approved)
+            {
+                MessageBox.Show("This Task is already Approved");
+            }
+            else if (!UserStatic.isAdmin && detail.TaskStateID == TaskStates.Delivered)
+            {
+                MessageBox.Show("This Task is already Delivered");
+            }
+            else if (!UserStatic.isAdmin && detail.TaskStateID == TaskStates.Approved)
+            {
+                MessageBox.Show("This Task is already Approved");
+            }
+            else 
+            {
+                TaskBLL.ApproveTask(detail.TaskID, UserStatic.isAdmin);
+                MessageBox.Show("Task was Updated");
+                FillAllData();
+                CleanFilters();
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            ExportToExcel.ExcelExport(dataGridView1);
         }
     }
 }

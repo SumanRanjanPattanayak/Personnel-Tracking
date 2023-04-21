@@ -56,13 +56,14 @@
             this.cmbDepartment = new System.Windows.Forms.ComboBox();
             this.lblSurName = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnApprove = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDisapprove = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnExport = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -83,6 +84,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnExport);
             this.panel3.Controls.Add(this.btnClear);
             this.panel3.Controls.Add(this.btnSearch);
             this.panel3.Controls.Add(this.lblDayAmount);
@@ -104,9 +106,9 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(270, 113);
+            this.btnClear.Location = new System.Drawing.Point(279, 114);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(82, 29);
+            this.btnClear.Size = new System.Drawing.Size(82, 28);
             this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -115,7 +117,7 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(270, 79);
+            this.btnSearch.Location = new System.Drawing.Point(279, 79);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(82, 29);
             this.btnSearch.TabIndex = 3;
@@ -145,7 +147,7 @@
             // 
             this.groupBox1.Controls.Add(this.rbEndDate);
             this.groupBox1.Controls.Add(this.rbStartDate);
-            this.groupBox1.Location = new System.Drawing.Point(260, 23);
+            this.groupBox1.Location = new System.Drawing.Point(260, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(101, 46);
             this.groupBox1.TabIndex = 17;
@@ -212,7 +214,7 @@
             this.cmbState.FormattingEnabled = true;
             this.cmbState.Location = new System.Drawing.Point(119, 114);
             this.cmbState.Name = "cmbState";
-            this.cmbState.Size = new System.Drawing.Size(126, 21);
+            this.cmbState.Size = new System.Drawing.Size(71, 21);
             this.cmbState.TabIndex = 3;
             // 
             // lblStart
@@ -343,7 +345,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btnApprove);
             this.panel2.Controls.Add(this.btnClose);
             this.panel2.Controls.Add(this.btnDelete);
             this.panel2.Controls.Add(this.btnUpdate);
@@ -355,16 +357,16 @@
             this.panel2.Size = new System.Drawing.Size(656, 94);
             this.panel2.TabIndex = 1;
             // 
-            // button1
+            // btnApprove
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(40, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 44);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Approve";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnApprove.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnApprove.Location = new System.Drawing.Point(40, 27);
+            this.btnApprove.Name = "btnApprove";
+            this.btnApprove.Size = new System.Drawing.Size(94, 44);
+            this.btnApprove.TabIndex = 0;
+            this.btnApprove.Text = "Approve";
+            this.btnApprove.UseVisualStyleBackColor = true;
+            this.btnApprove.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnClose
             // 
@@ -386,6 +388,7 @@
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -431,6 +434,17 @@
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
             // 
+            // btnExport
+            // 
+            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.Location = new System.Drawing.Point(196, 114);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(77, 28);
+            this.btnExport.TabIndex = 5;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
             // frmPermissionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -466,7 +480,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnDisapprove;
         private System.Windows.Forms.Button btnNew;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnApprove;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel pnlForAdmin;
         private System.Windows.Forms.ComboBox cmbPosition;
@@ -493,5 +507,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label lblState;
         private System.Windows.Forms.ComboBox cmbState;
+        private System.Windows.Forms.Button btnExport;
     }
 }

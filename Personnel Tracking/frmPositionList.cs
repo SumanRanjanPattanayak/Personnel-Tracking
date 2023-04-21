@@ -77,5 +77,16 @@ namespace PERSONNEL_TRACKING
             detail.DepartmentID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[4].Value);
             detail.OldDepartmentID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you Sure to delete this Position?", "Warning!", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                PositionBLL.DeletePosition(detail.ID);
+                MessageBox.Show("Position was deleted");
+                fillGrid();
+            }
+        }
     }
 }

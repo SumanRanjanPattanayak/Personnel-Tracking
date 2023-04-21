@@ -68,6 +68,15 @@ namespace PERSONNEL_TRACKING
                 txtImagePath.Text = imagepath;
                 pictureBox1.ImageLocation = imagepath;
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                if (!UserStatic.isAdmin)
+                {
+                    chkAdmin.Enabled = false;
+                    txtUserNo.Enabled = false;
+                    txtSalary.Enabled = false;
+                    cmbDepartment.Enabled = false;
+                    cmbPosition.Enabled = false;
+
+                }
             }
         }
 

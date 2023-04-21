@@ -58,6 +58,10 @@ namespace PERSONNEL_TRACKING
         void FillAllData()
         {
             dto = SalaryBLL.GetAll();
+            if (!UserStatic.isAdmin)
+            {
+                dto.Salaries = dto.Salaries.Where(x => x.EmployeeID == UserStatic.EmployeeID).ToList();
+            }
             dataGridView1.DataSource = dto.Salaries;
             comboFull = false;
             cmbDepartment.DataSource = dto.Departments;
@@ -95,6 +99,14 @@ namespace PERSONNEL_TRACKING
             dataGridView1.Columns[11].HeaderText = "Salary";
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns[13].Visible = false;
+            if (!UserStatic.isAdmin)
+            {
+                btnUpdate.Hide();
+                btnDelete.Hide();
+                btnNew.Location = new Point(255, 28);
+                btnClose.Location = new Point(343, 28);
+                pnlForAdmin.Hide();
+            }
         }
 
         private void cmbDepartment_SelectedIndexChanged(object sender, EventArgs e)
@@ -189,6 +201,23 @@ namespace PERSONNEL_TRACKING
             detail.MonthID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
             detail.SalaryAmount = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[11].Value);
             detail.OldSalary = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[11].Value);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you Sure to delete this Salary?", "Warning!", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                SalaryBLL.DeleteSalary(detail.SalaryID);
+                MessageBox.Show("Salary was Deleted");
+                FillAllData();
+                ClearFilters();
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            ExportToExcel.ExcelExport(dataGridView1);
         }
     }
 }

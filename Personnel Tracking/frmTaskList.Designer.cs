@@ -60,6 +60,7 @@
             this.btnApprove = new System.Windows.Forms.Button();
             this.btnNew = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnExport = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlForAllUsers.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -80,6 +81,7 @@
             // 
             // pnlForAllUsers
             // 
+            this.pnlForAllUsers.Controls.Add(this.btnExport);
             this.pnlForAllUsers.Controls.Add(this.btnClear);
             this.pnlForAllUsers.Controls.Add(this.btnSearch);
             this.pnlForAllUsers.Controls.Add(this.cmbTaskState);
@@ -99,7 +101,7 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(251, 115);
+            this.btnClear.Location = new System.Drawing.Point(163, 115);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(82, 29);
             this.btnClear.TabIndex = 4;
@@ -110,7 +112,7 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(163, 115);
+            this.btnSearch.Location = new System.Drawing.Point(75, 115);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(82, 29);
             this.btnSearch.TabIndex = 3;
@@ -352,6 +354,7 @@
             this.btnDelete.TabIndex = 3;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
@@ -373,6 +376,7 @@
             this.btnApprove.TabIndex = 0;
             this.btnApprove.Text = "Approve";
             this.btnApprove.UseVisualStyleBackColor = true;
+            this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
             // 
             // btnNew
             // 
@@ -394,6 +398,17 @@
             this.dataGridView1.Size = new System.Drawing.Size(663, 201);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.Location = new System.Drawing.Point(251, 115);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(82, 29);
+            this.btnExport.TabIndex = 4;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // frmTaskList
             // 
@@ -453,5 +468,6 @@
         private System.Windows.Forms.Label lblTaskDate;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Button btnExport;
     }
 }

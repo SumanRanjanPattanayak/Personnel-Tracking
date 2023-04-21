@@ -50,6 +50,10 @@ namespace PERSONNEL_TRACKING
             {
                 MessageBox.Show("Please select a Permission!");
             }
+            else if (detail.State==PermissionStates.Approved||detail.State==PermissionStates.Disapproved)
+            {
+                MessageBox.Show("You can't Update any Approved or Disapproved Permissions");
+            }
             else
             {
                 frmPermission frm = new frmPermission();
@@ -68,6 +72,10 @@ namespace PERSONNEL_TRACKING
         void FillAllData()
         {
             dto = PermissionBLL.GetAll();
+            if (!UserStatic.isAdmin)
+            {
+                dto.Permisssions = dto.Permisssions.Where(x=>x.EmployeeID==UserStatic.EmployeeID).ToList();
+            }
             dataGridView1.DataSource = dto.Permisssions;
             comboFull = false;
             cmbDepartment.DataSource = dto.Departments;
@@ -103,6 +111,16 @@ namespace PERSONNEL_TRACKING
             dataGridView1.Columns[12].Visible = false;
             dataGridView1.Columns[13].Visible = false;
             dataGridView1.Columns[14].Visible = false;
+            if (!UserStatic.isAdmin)
+            {
+                pnlForAdmin.Hide();
+                btnApprove.Hide();
+                btnDisapprove.Hide();
+                btnDelete.Hide();
+                btnNew.Location = new Point(140, 27);
+                btnUpdate.Location = new Point(257, 27);
+                btnClose.Location = new Point(345, 27);
+            }
             
         }
 
@@ -177,8 +195,8 @@ namespace PERSONNEL_TRACKING
             detail.PermissionID = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[14].Value);
             detail.StartDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[8].Value);
             detail.EndDate = Convert.ToDateTime(dataGridView1.Rows[e.RowIndex].Cells[9].Value);
-            detail.Explanation = dataGridView1.Rows[e.RowIndex].Cells[14].Value.ToString();
-            detail.UserNo = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[11].Value);
+            detail.Explanation = dataGridView1.Rows[e.RowIndex].Cells[13].Value.ToString();
+            detail.UserNo = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[1].Value);
             detail.State = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[12].Value);
             detail.PermissionDayAmount = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[10].Value);
         }
@@ -197,6 +215,30 @@ namespace PERSONNEL_TRACKING
             MessageBox.Show("Disapproved");
             FillAllData();
             CleanFilters();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Are you Sure to delete this Permission?", "Warning!",MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                if (detail.State == PermissionStates.Approved || detail.State == PermissionStates.Disapproved)
+                {
+                    MessageBox.Show("You can't Delete Approved or Disapproved Permission");
+                }
+                else 
+                {
+                    PermissionBLL.DeletePermission(detail.PermissionID);
+                    MessageBox.Show("Permission Was Deleted");
+                    FillAllData();
+                    CleanFilters();
+                }
+            }
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            ExportToExcel.ExcelExport(dataGridView1);
         }
     }
 }
